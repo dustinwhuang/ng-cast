@@ -4,7 +4,7 @@ angular.module('video-player')
   controller: function(youTube, twitch) {
     this.videos = window.exampleVideoData;
     this.currentVideo = window.exampleVideoData[0];
-    // this.service = 'twitch';
+    this.services = ['twitch', 'youTube'];
 
     this.selectVideo = index => {
       this.currentVideo = this.videos[index];
@@ -16,20 +16,17 @@ angular.module('video-player')
     };
 
     this.changeService = () => {
+      let query = angular.element(document).find('input').val();
       if (this.service === 'youTube') {
-        youTube.search({query: 'angular.js', max: 5, key: window.YOUTUBE_API_KEY}, this.searchResults);
+        youTube.search(query, this.searchResults);
       }
       if (this.service === 'twitch') {
-        twitch.search({query: 'test', key: window.TWITCH_API_KEY}, this.searchResults);
+        twitch.search(query, this.searchResults);
       }
     };
 
-    if (this.service === 'youTube') {
-      youTube.search({query: 'angular.js', max: 5, key: window.YOUTUBE_API_KEY}, this.searchResults);
-    }
-    if (this.service === 'twitch') {
-      twitch.search({query: 'test', key: window.TWITCH_API_KEY}, this.searchResults);
-    }
+    // youTube.search('angular.js', this.searchResults);
+    twitch.search('programming', this.searchResults);
   },
 
   templateUrl: 'src/templates/app.html'

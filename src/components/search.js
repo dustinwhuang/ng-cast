@@ -10,11 +10,11 @@ angular.module('video-player')
     this.search = query => {
       if (this.service === 'youTube') {
         this.debouncedSearch = _.debounce(youTube.search, 500);
-        this.debouncedSearch({query: query, max: 5, key: window.YOUTUBE_API_KEY}, this.result);
+        this.debouncedSearch(query, this.result);
       }
       if (this.service === 'twitch') {
         this.debouncedSearch = _.debounce(twitch.search, 500);
-        this.debouncedSearch({query: query, key: window.TWITCH_API_KEY}, this.result);
+        this.debouncedSearch(query, this.result);
       }
     };
   },
