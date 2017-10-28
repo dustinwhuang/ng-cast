@@ -1,9 +1,18 @@
-<li class="video-list-entry media">
+<li class="video-list-entry media" ng-if="$ctrl.service === 'youTube'">
   <div class="media-left">
     <img class="media-object" ng-src={{$ctrl.video.snippet.thumbnails.default.url}} />
   </div>
   <div class="media-body">
     <div class="video-list-entry-title" ng-click="$ctrl.onClick($ctrl.index)">{{$ctrl.video.snippet.title}}</div>
     <div class="video-list-entry-detail">{{$ctrl.video.snippet.description}}</div>
+  </div>
+</li>
+<li class="video-list-entry media" ng-if="$ctrl.service === 'twitch'">
+  <div class="media-left">
+    <img class="media-object" ng-src={{$ctrl.video.preview.small}} />
+  </div>
+  <div class="media-body">
+    <div class="video-list-entry-title" ng-click="$ctrl.onClick($ctrl.index)">{{$ctrl.video.channel.name}}</div>
+    <div class="video-list-entry-detail">{{$ctrl.video.channel.status}}</div>
   </div>
 </li>

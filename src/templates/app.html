@@ -1,15 +1,19 @@
 <div id="app container">
   <nav class="navbar">
     <div class="col-md-6 col-md-offset-3">
-      <search result="$ctrl.searchResults"></search>
+      <search result="$ctrl.searchResults" service="$ctrl.service"></search>
+      <select ng-model="$ctrl.service" ng-change="$ctrl.changeService()">
+        <option value="youTube" selected>YouTube</option>
+        <option value="twitch">Twitch</option>
+      </select>
     </div>
   </nav>
   <div class="row">
     <div class="col-md-7">
-      <video-player video="$ctrl.currentVideo"></video-player>
+      <video-player video="$ctrl.currentVideo" service="$ctrl.service"></video-player>
     </div>
     <div class="col-md-5">
-      <video-list videos="$ctrl.videos" on-click="$ctrl.selectVideo"></video-list>
+      <video-list videos="$ctrl.videos" service="$ctrl.service" on-click="$ctrl.selectVideo"></video-list>
     </div>
   <div>
 </div>

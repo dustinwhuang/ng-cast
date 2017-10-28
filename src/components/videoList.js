@@ -2,7 +2,8 @@ angular.module('video-player')
 .component('videoList', {
   bindings: {
     videos: '<',
-    onClick: '<'
+    onClick: '<',
+    service: '<'
   },
 
   templateUrl: 'src/templates/videoList.html'
